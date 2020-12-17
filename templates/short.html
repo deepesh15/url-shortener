@@ -4,6 +4,19 @@
 {% endblock %}
 
 {% block content %}
-    <h1>http://127.0.0.1:5000/{{short_url_display}}</h1>
-    <a href="http://127.0.0.1:5000"><button type="button" class="btn btn-primary">BACK</button></a>
+    <div class="col col-md-6">
+        <input type="url" class="form-control" value="https://mighty-url-short.herokuapp.com/{{short_url_display}}" id="shortLink">
+    </div>
+    <br>
+    <button type="button" class="btn btn-primary" onclick="copyFunction()"><span></span>Copy</button>
+    <a href="https://mighty-url-short.herokuapp.com/"><button type="button" class="btn btn-primary">BACK</button></a>
+    <script>
+        function copyFunction(){
+            let copyLink = document.getElementById("shortLink");
+            copyLink.select();
+            copyLink.setSelectionRange(0,99999);
+            document.execCommand("copy");
+            alert("Link has been copied to clipboard");
+        }
+    </script>
 {% endblock %}
